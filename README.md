@@ -9,23 +9,23 @@ project_root/
 ├── common/                      # Common functionality and base classes
 │   └── common_methods.py        # Contains BasePage, ElementFinder, and ElementWaiter classes
 ├── pages/                       # Page Object classes
-│   └── wiki_page.py            # Wikipedia page object
+│   └── wiki_page.py             # Wikipedia page object
 ├── features/                    # BDD feature files and step definitions
-│   ├── environment.py          # Behave environment setup
-│   ├── wikipedia.feature       # Feature file for Wikipedia tests
-│   └── steps/                  # Step definition files
-│       └── wikipedia_steps.py  # Step definitions for Wikipedia tests
-├── utils/                      # Utility modules
-│   ├── exceptions.py           # Custom exception classes
-│   └── logger.py              # Logging configuration
-├── locators/                   # Element locators
-│   └── wikipedia_locators.py   # Locators for Wikipedia page
-├── config/                     # Configuration files
-│   └── config.yaml            # Configuration settings
-├── drivers/                    # WebDriver executables
-│   └── chromedriver.exe       # Chrome WebDriver
-├── requirements.txt            # Project dependencies
-└── README.md                  # Project documentation
+│   ├── environment.py           # Behave environment setup
+│   ├── wikipedia.feature        # Feature file for Wikipedia tests
+│   └── steps/                   # Step definition files
+│       └── wikipedia_steps.py   # Step definitions for Wikipedia tests
+├── utils/                       # Utility modules
+│   ├── exceptions.py            # Custom exception classes
+│   └── logger.py                # Logging configuration
+├── locators/                    # Element locators
+│   └── wikipedia_locators.py    # Locators for Wikipedia page
+├── config/                      # Configuration files
+│   └── config.yaml              # Configuration settings
+├── drivers/                     # WebDriver executables
+│   └── chromedriver.exe         # Chrome WebDriver
+├── requirements.txt             # Project dependencies
+└── README.md                    # Project documentation
 ```
 
 ## Key Components
