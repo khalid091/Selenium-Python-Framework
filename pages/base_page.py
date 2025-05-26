@@ -34,21 +34,10 @@ class ElementVisibilityTimeoutError(Exception):
     pass
 
 class BasePage:
-    def __init__(self, driver):
+    def __init__(self, driver, config):
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 10)
-        self.config = self.load_config()
-
-    def load_config(self):
-        try:
-            with open('config/config.yaml', 'r') as file:
-                return yaml.safe_load(file)
-        except FileNotFoundError:
-            logger.error("Config file not found at 'config/config.yaml'")
-            raise FileNotFoundError("Config file not found at 'config/config.yaml'")
-        except yaml.YAMLError as e:
-            logger.error(f"Error parsing YAML config file: {str(e)}")
-            raise yaml.YAMLError(f"Error parsing YAML config file: {str(e)}")
+        self.config = config
 
     def find_element(self, locator):
         """Find element with explicit wait"""

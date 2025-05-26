@@ -1,3 +1,6 @@
 browser: chrome
 urls:
   wikipedia: "https://www.wikipedia.org/"
+webdriver:
+  chromedriver_executable_path: drivers/chromedriver.exe
+

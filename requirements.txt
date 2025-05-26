@@ -2,3 +2,4 @@ selenium
 behave
 pytest
 pytest-bdd
+PyYAML
