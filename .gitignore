@@ -1,0 +1,17 @@
+# Ignore Python bytecode files
+*.pyc
+__pycache__/
+
+# Ignore virtual environments
+venv/
+.env
+
+# Ignore IDE config files
+.vscode/
+.idea/
+
+# Ignore log files
+*.log
+
+# Ignore .env files containing sensitive information
+.env
