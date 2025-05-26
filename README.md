@@ -1,77 +1,103 @@
-# Selenium Python Automation Framework
+# Selenium Python BDD Framework
 
-A robust test automation framework built with Python, Selenium, and Behave for BDD testing.
+This project is a Behavior-Driven Development (BDD) framework using Selenium WebDriver with Python, implementing the Page Object Model design pattern.
 
 ## Project Structure
 
 ```
-├── config/
-│   └── config.yaml           # Configuration settings
-├── drivers/
-│   └── chromedriver.exe      # Chrome WebDriver
-├── features/
-│   ├── environment.py        # Behave hooks and setup
-│   ├── steps/
-│   │   └── wikipedia_steps.py # Step definitions
-│   └── wikipedia.feature     # BDD feature files
-├── locators/
-│   └── wikipedia_locators.py # Page element locators
-├── pages/
-│   ├── base_page.py         # Base page object with common methods
-│   └── wiki_page.py         # Wikipedia page object
-├── requirements.txt         # Project dependencies
-└── README.md               # Project documentation
+project_root/
+├── common/                      # Common functionality and base classes
+│   └── common_methods.py        # Contains BasePage, ElementFinder, and ElementWaiter classes
+├── pages/                       # Page Object classes
+│   └── wiki_page.py            # Wikipedia page object
+├── features/                    # BDD feature files and step definitions
+│   ├── environment.py          # Behave environment setup
+│   ├── wikipedia.feature       # Feature file for Wikipedia tests
+│   └── steps/                  # Step definition files
+│       └── wikipedia_steps.py  # Step definitions for Wikipedia tests
+├── utils/                      # Utility modules
+│   ├── exceptions.py           # Custom exception classes
+│   └── logger.py              # Logging configuration
+├── locators/                   # Element locators
+│   └── wikipedia_locators.py   # Locators for Wikipedia page
+├── config/                     # Configuration files
+│   └── config.yaml            # Configuration settings
+├── drivers/                    # WebDriver executables
+│   └── chromedriver.exe       # Chrome WebDriver
+├── requirements.txt            # Project dependencies
+└── README.md                  # Project documentation
 ```
 
-## Setup Instructions
+## Key Components
 
-1. **Prerequisites**
-   - Python 3.8 or higher
-   - Chrome browser installed
-   - pip (Python package manager)
+### Common Methods (`common/common_methods.py`)
+- `BasePage`: Base class for all page objects
+- `ElementFinder`: Handles element finding operations
+- `ElementWaiter`: Handles element waiting operations
 
-2. **Installation**
+### Page Objects (`pages/`)
+- Contains page-specific classes that inherit from `BasePage`
+- Each page object represents a web page and its functionality
+
+### Features (`features/`)
+- Contains BDD feature files written in Gherkin syntax
+- Step definitions that implement the feature scenarios
+
+### Utils (`utils/`)
+- `exceptions.py`: Custom exception classes for better error handling
+- `logger.py`: Centralized logging configuration
+
+### Locators (`locators/`)
+- Contains element locators organized by page
+- Uses a class-based approach for better organization
+
+### Configuration (`config/`)
+- `config.yaml`: Contains configuration settings like URLs and driver paths
+
+## Setup and Installation
+
+1. Create a virtual environment:
    ```bash
-   # Clone the repository
-   git clone <repository-url>
-   cd <project-directory>
-
-   # Create and activate virtual environment (optional but recommended)
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
-   # Install dependencies
+2. Activate the virtual environment:
+   - Windows:
+     ```bash
+     .\venv\Scripts\activate
+     ```
+   - Unix/MacOS:
+     ```bash
+     source venv/bin/activate
+     ```
+
+3. Install dependencies:
+   ```bash
    pip install -r requirements.txt
    ```
 
-3. **ChromeDriver Setup**
-   - Ensure ChromeDriver version matches your Chrome browser version
-   - Place ChromeDriver in the `drivers` directory
-   - Update the path in `environment.py` if needed
+4. Download the appropriate WebDriver for your browser and place it in the `drivers/` directory.
 
 ## Running Tests
 
+To run the tests:
 ```bash
-# Run all tests
 behave
-
-# Run specific feature
-behave features/wikipedia.feature
-
-# Run with specific tags
-behave --tags @smoke
-
-# Run with detailed logging
-behave -v
 ```
 
-## Key Features
+To run with specific tags:
+```bash
+behave --tags=@tag_name
+```
 
-- **Page Object Model**: Organized page interactions and element locators
-- **BDD Testing**: Behavior-driven development with Behave
-- **Robust Error Handling**: Custom exceptions and logging
-- **Configurable**: YAML-based configuration
-- **Cross-browser Support**: Ready for multiple browser implementations
+## Best Practices
+
+1. **Page Object Model**: Each web page has its own class that inherits from `BasePage`
+2. **Element Locators**: All locators are stored in separate files for better maintenance
+3. **Configuration Management**: Uses YAML for configuration settings
+4. **Error Handling**: Custom exceptions for better error management
+5. **Logging**: Centralized logging configuration for better debugging
+6. **Code Organization**: Clear separation of concerns with distinct classes for different functionalities
 
 ## Maintenance Notes
 
@@ -113,23 +139,6 @@ behave -v
    - Check network connectivity
    - Verify element locators
 
-## Best Practices
-
-1. **Test Organization**
-   - Keep feature files focused and atomic
-   - Use meaningful scenario names
-   - Follow BDD best practices
-
-2. **Code Quality**
-   - Follow PEP 8 guidelines
-   - Write clear docstrings
-   - Use type hints where possible
-
-3. **Maintenance**
-   - Regular dependency updates
-   - ChromeDriver version checks
-   - Test suite review
-
 ## Future Improvements
 
 1. **Framework Enhancements**
@@ -152,7 +161,7 @@ behave -v
 
 1. **Creating virtual environment**
 
-   A virtual environment is a self-contained directory that contains all the necessary Python libraries and dependencies for your project. This allows you to isolate your project’s dependencies and avoid any conflicts with your global Python setup.
+   A virtual environment is a self-contained directory that contains all the necessary Python libraries and dependencies for your project. This allows you to isolate your project's dependencies and avoid any conflicts with your global Python setup.
    
        - Navigate to your project root directory using the terminal or command prompt.
        - Run the following command to create a virtual environment named venv: python -m venv venv

@@ -6,10 +6,19 @@ from utils.logger import logger
 from utils.exceptions import ElementNotFoundError, ElementNotClickableError, ElementVisibilityTimeoutError
 
 class BasePage:
+    """Base class for all page objects"""
     def __init__(self, driver, config):
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 10)
         self.config = config
+        self.element_finder = ElementFinder(driver, self.wait)
+        self.element_waiter = ElementWaiter(driver, self.wait)
+
+class ElementFinder:
+    """Class for finding elements with different conditions"""
+    def __init__(self, driver, wait):
+        self.driver = driver
+        self.wait = wait
 
     def find_element(self, locator):
         """Find element with explicit wait"""
@@ -58,6 +67,12 @@ class BasePage:
         except StaleElementReferenceException:
             logger.error(f"Element became stale: {locator}")
             raise ElementNotVisibleException(f"Element became stale with locator: {locator}")
+
+class ElementWaiter:
+    """Class for waiting on elements with different conditions"""
+    def __init__(self, driver, wait):
+        self.driver = driver
+        self.wait = wait
 
     def wait_for_element_to_disappear(self, locator):
         """Wait for element to disappear"""
