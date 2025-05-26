@@ -80,14 +80,101 @@ project_root/
 
 ## Running Tests
 
-To run the tests:
+### Run All Tests
 ```bash
 behave
 ```
 
-To run with specific tags:
+### Run Specific Feature Files
+
+1. Run a single feature file:
 ```bash
-behave --tags=@tag_name
+behave features/feature1.feature
+```
+
+2. Run multiple specific feature files:
+```bash
+behave features/feature1.feature features/feature2.feature
+```
+
+3. Run feature files using patterns:
+```bash
+# Run all feature files in a specific directory
+behave features/directory_name/
+
+# Run feature files matching a pattern
+behave features/*.feature
+```
+
+### Run with Tags
+
+1. Run scenarios with specific tags:
+```bash
+# Run scenarios with @smoke tag
+behave --tags=@smoke
+
+# Run scenarios with multiple tags
+behave --tags=@smoke --tags=@regression
+
+# Run scenarios with either tag
+behave --tags=@smoke,@regression
+```
+
+2. Run scenarios with tag combinations:
+```bash
+# Run scenarios that have both @smoke AND @regression tags
+behave --tags=@smoke --tags=@regression
+
+# Run scenarios that have @smoke but NOT @regression
+behave --tags=@smoke --tags=~@regression
+```
+
+### Run with Additional Options
+
+1. Run with detailed output:
+```bash
+# Show detailed output
+behave -v
+
+# Show very detailed output
+behave -vv
+```
+
+2. Run with specific format:
+```bash
+# Generate HTML report
+behave -f html -o report.html
+
+# Generate JSON report
+behave -f json -o report.json
+```
+
+3. Run with specific environment:
+```bash
+# Run with specific environment
+behave --define env=staging
+```
+
+### Examples
+
+1. Run only the Wikipedia feature file:
+```bash
+behave features/wikipedia.feature
+```
+
+2. Run all feature files in a specific directory:
+```bash
+behave features/smoke_tests/
+```
+
+3. Run all feature files with @regression tag:
+```bash
+behave --tags=@regression
+```
+
+4. Run with detailed output and HTML report:
+```bash
+behave -v -f html -o report.html
 ```
 
 ## Best Practices
@@ -200,6 +287,9 @@ behave --tags=@tag_name
 4. Push to the branch
 5. Create a Pull Request
 
+#Notes
+
+- behave --steps-directory my_steps features ...... Command-line for different folder path of steps folder
 
 ## Contact
 
