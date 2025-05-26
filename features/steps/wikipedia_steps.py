@@ -4,7 +4,7 @@ from pages.wiki_page import WikiPage
 @given('User navigate to Wikipedia')
 def navigate_to_wikipedia(context):
     # The browser is already opened in environment.py
-    context.wiki_page = WikiPage(context.driver)
+    context.wiki_page = WikiPage(context.driver, context.config)
     context.wiki_page.open()
 
 @when('User validate the wikipedia logo')
