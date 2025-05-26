@@ -1,37 +1,9 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, ElementClickInterceptedException, StaleElementReferenceException, ElementNotVisibleException
+from utils.exceptions import ElementNotFoundError, ElementNotClickableError, ElementVisibilityTimeoutError
 import yaml
-import logging
-
-# Configure logging with a cleaner format and higher level
-logging.basicConfig(
-    level=logging.WARNING,  # Only show WARNING and above
-    format='%(levelname)s: %(message)s',  # Simpler format
-    datefmt='%H:%M:%S'
-)
-
-# Disable selenium and urllib3 debug logs
-logging.getLogger('selenium').setLevel(logging.WARNING)
-logging.getLogger('urllib3').setLevel(logging.WARNING)
-
-logger = logging.getLogger(__name__)
-
-class ElementNotFoundError(Exception):
-    """Raised when an element cannot be found"""
-    pass
-
-class ElementNotClickableError(Exception):
-    """Raised when an element is not clickable"""
-    pass
-
-class ElementNotVisibleError(Exception):
-    """Raised when an element is not visible"""
-    pass
-
-class ElementVisibilityTimeoutError(Exception):
-    """Raised when an element is found but not visible within the timeout period"""
-    pass
+from utils.logger import logger
 
 class BasePage:
     def __init__(self, driver, config):
