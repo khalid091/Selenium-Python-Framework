@@ -1,9 +1,9 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, ElementClickInterceptedException, StaleElementReferenceException, ElementNotVisibleException
-from utils.exceptions import ElementNotFoundError, ElementNotClickableError, ElementVisibilityTimeoutError
 import yaml
 from utils.logger import logger
+from utils.exceptions import ElementNotFoundError, ElementNotClickableError, ElementVisibilityTimeoutError
 
 class BasePage:
     def __init__(self, driver, config):
@@ -76,4 +76,4 @@ class BasePage:
             self.wait.until(lambda driver: driver.execute_script('return document.readyState') == 'complete')
         except TimeoutException:
             logger.error("Page did not load completely")
-            raise TimeoutException("Page did not load completely")
+            raise TimeoutException("Page did not load completely") 

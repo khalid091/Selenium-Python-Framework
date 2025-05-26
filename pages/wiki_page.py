@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from common.base_page import BasePage
 from locators.wikipedia_locators import WikiPediaLocators
-from pages.base_page import BasePage
 
 class WikiPage(BasePage):
     def open(self):
